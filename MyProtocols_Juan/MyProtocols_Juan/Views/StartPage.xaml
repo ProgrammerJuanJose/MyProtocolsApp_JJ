@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyProtocols_Juan.Views.StartPage">
+    <ContentPage.Content>
+        
+        <ScrollView>
+            <FlexLayout Direction="Column" Padding="40,50" BackgroundColor="#AFAFAF">
+
+                <Label Text="Select an action"
+                       TextColor="White" FontSize="30"
+                       HorizontalTextAlignment="Center"
+                       Padding="0,0,0,30"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="0" Grid.Row="0" x:Name="BtnProtocolManagment" 
+                            Text="Protocol Managment" BackgroundColor="green" TextColor="White" 
+                            HeightRequest="150" WidthRequest="150" CornerRadius="25"/>
+
+                    <Button Grid.Column="1" Grid.Row="0" x:Name="BtnUserManagment" 
+                            Text="User Managment" BackgroundColor="#733803" TextColor="White" 
+                            HeightRequest="150" WidthRequest="150" CornerRadius="25"/>
+
+                    <Button Grid.Column="0" Grid.Row="1" x:Name="BtnCategoryManagment" 
+                            Text="Category Managment" BackgroundColor="#0000A8" TextColor="White" 
+                            HeightRequest="150" WidthRequest="150" CornerRadius="25"/>
+
+                    <Button Grid.Column="1" Grid.Row="1" x:Name="BtnStepsManagment" 
+                            Text="Steps Managment" BackgroundColor="Purple" TextColor="White" 
+                            HeightRequest="150" WidthRequest="150" CornerRadius="25"/>
+                </Grid>
+            </FlexLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

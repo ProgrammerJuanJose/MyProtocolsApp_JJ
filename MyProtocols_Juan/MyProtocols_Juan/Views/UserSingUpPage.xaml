@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyProtocols_Juan.Views.UserSingUpPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" BackgroundColor="#FAFAFA">
+
+            <Entry x:Name="TxtEmail" Placeholder="Username / Email" ClearButtonVisibility="WhileEditing">
+                <Entry.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                    </Trigger>
+                </Entry.Triggers>
+            </Entry>
+
+            <Entry x:Name="TxtPassword" Placeholder="Password" ClearButtonVisibility="WhileEditing">
+            <Entry.Triggers>
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontAttributes" Value="Bold"/>
+                </Trigger>
+            </Entry.Triggers>
+            </Entry>
+
+            <Entry x:Name="TxtName" Placeholder="Name" ClearButtonVisibility="WhileEditing">
+                <Entry.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                    </Trigger>
+                </Entry.Triggers>
+            </Entry>
+
+            <Entry x:Name="TxtBackUpEmail" Placeholder="Backup Email" ClearButtonVisibility="WhileEditing">
+                <Entry.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                    </Trigger>
+                </Entry.Triggers>
+            </Entry>
+
+            <Entry x:Name="TxtPhoneNumber" Placeholder="Phone number" Keyboard="Telephone" ClearButtonVisibility="WhileEditing">
+                <Entry.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                    </Trigger>
+                </Entry.Triggers>
+            </Entry>
+
+            <Editor x:Name="TxtAddress" Placeholder="Address" MinimumHeightRequest="0" AutoSize="TextChanges" Keyboard="Text"/>
+
+            <Picker x:Name="PkrUserRole" Title="Select User Role" ItemDisplayBinding="{Binding Description}"/>
+
+            <StackLayout>
+                <Button x:Name="BtnAdd" Text="Apply" CornerRadius="25" BackgroundColor="green" FontSize="20" Clicked="BtnAdd_Clicked"/>
+                <Button x:Name="BtnCancel" Text="Cancel" CornerRadius="25" BackgroundColor="Firebrick" FontSize="20"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
