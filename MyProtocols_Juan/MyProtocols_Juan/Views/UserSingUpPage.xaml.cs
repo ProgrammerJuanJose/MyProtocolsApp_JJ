@@ -22,6 +22,7 @@ namespace MyProtocols_Juan.Views
             BindingContext = viewModel = new UserViewModel();
 
             LoadUserRolesAsync();
+            
         }
         //Función que permite la carga de los roles de usuario
         private async void LoadUserRolesAsync()
@@ -53,6 +54,11 @@ namespace MyProtocols_Juan.Views
             }
                                                         
 
+        }
+
+        private async void BtnCancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }

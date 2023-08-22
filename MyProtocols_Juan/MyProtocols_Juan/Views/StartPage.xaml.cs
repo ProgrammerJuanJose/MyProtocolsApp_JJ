@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using MyProtocols_Juan.Views;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace MyProtocols_Juan.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -15,6 +18,22 @@ namespace MyProtocols_Juan.Views
         public StartPage()
         {
             InitializeComponent();
+            LoadUserName();
+        }
+
+        private void LoadUserName()
+        {
+            LblUserName.Text = GlobalObjects.MyLocalUser.Nombre.ToUpper();
+        }
+
+        private async void BtnUserManagment_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new UserManagmentPage());
+        }
+
+        private async void BtnChangePassword_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ChangePasswordPage());
         }
     }
 }

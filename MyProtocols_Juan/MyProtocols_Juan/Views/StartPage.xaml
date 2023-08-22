@@ -7,7 +7,12 @@
         <ScrollView>
             <FlexLayout Direction="Column" Padding="40,50" BackgroundColor="#AFAFAF">
 
-                <Label Text="Select an action"
+                <Label x:Name="LblUserName"
+                       TextColor="White" FontSize="30"
+                       HorizontalTextAlignment="Center"
+                       Padding="0,0,0,30"/>
+
+                    <Label Text="Select an action"
                        TextColor="White" FontSize="30"
                        HorizontalTextAlignment="Center"
                        Padding="0,0,0,30"/>
@@ -29,7 +34,7 @@
 
                     <Button Grid.Column="1" Grid.Row="0" x:Name="BtnUserManagment" 
                             Text="User Managment" BackgroundColor="#733803" TextColor="White" 
-                            HeightRequest="150" WidthRequest="150" CornerRadius="25"/>
+                            HeightRequest="150" WidthRequest="150" CornerRadius="25" Clicked="BtnUserManagment_Clicked"/>
 
                     <Button Grid.Column="0" Grid.Row="1" x:Name="BtnCategoryManagment" 
                             Text="Category Managment" BackgroundColor="#0000A8" TextColor="White" 
@@ -38,6 +43,10 @@
                     <Button Grid.Column="1" Grid.Row="1" x:Name="BtnStepsManagment" 
                             Text="Steps Managment" BackgroundColor="Purple" TextColor="White" 
                             HeightRequest="150" WidthRequest="150" CornerRadius="25"/>
+
+                    <Button Grid.Column="0" Grid.Row="2" x:Name="BtnChangePassword" 
+                            Text="Change Password" BackgroundColor="#9E002B" TextColor="White" 
+                            HeightRequest="150" WidthRequest="150" CornerRadius="25" Clicked="BtnChangePassword_Clicked"/>
                 </Grid>
             </FlexLayout>
         </ScrollView>

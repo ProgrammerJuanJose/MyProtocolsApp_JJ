@@ -11,8 +11,8 @@ namespace MyProtocols_Juan.Services
         //donde el prefijo será la parte del URL que nunca cambiará y el sufijo será la parte variable
         //(nombre del controlador y sus parámetros)
 
-        public static string ProductionPrefixURL = "http://192.168.0.15:45455/api/";
-        public static string TestingPrefixURL = "http://192.168.0.15:45455/api/";
+        public static string ProductionPrefixURL = "http://192.168.0.11:45455/api/";
+        public static string TestingPrefixURL = "http://192.168.0.11:45455/api/";
 
         public static string ApiKeyName = "Progra6ApiKeyJJ";
         public static string ApiKeyValue = "JuanJoseProgra6acb123";

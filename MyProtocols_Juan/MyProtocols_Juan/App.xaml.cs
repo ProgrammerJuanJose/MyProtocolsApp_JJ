@@ -13,7 +13,7 @@ namespace MyProtocols_Juan
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             //Definimos la forma de apilar las páginas en la pantalla y cuál es la primera página en ser mostrada
             MainPage = new NavigationPage(new AppLoginPage());
         }

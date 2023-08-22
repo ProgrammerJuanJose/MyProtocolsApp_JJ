@@ -37,7 +37,7 @@ namespace MyProtocols_Juan.Models
 
         public int UserRoleId { get; set; }
 
-        public virtual UserRole? UserRole { get; set; }
+        public virtual UserRole UserRole { get; set; } = null!;
 
         //Funciones específicas de llamada a end points del API
 
@@ -62,6 +62,7 @@ namespace MyProtocols_Juan.Models
 
                 //Agregamos el mecanismo de seguridad, en este caso API key
                 Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
+              
 
                 //Ejecutar la llamada del API
                 RestResponse response = await client.ExecuteAsync(Request);
@@ -101,8 +102,96 @@ namespace MyProtocols_Juan.Models
                 //Agregamos el mecanismo de seguridad, en este caso API key
                 Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
 
-                string SerializedModelObject = JsonConvert.SerializeObject(this);
-                Request.AddBody(SerializedModelObject, GlobalObjects.MimeType);
+                Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
+
+                string SerializedModel = JsonConvert.SerializeObject(this);
+                Request.AddBody(SerializedModel, GlobalObjects.MimeType);
+
+                //Ejecutar la llamada del API
+                RestResponse response = await client.ExecuteAsync(Request);
+
+                //Saber si las cosas salieron bien
+                HttpStatusCode statusCode = response.StatusCode;
+                if (statusCode == HttpStatusCode.Created)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                throw;
+            }
+        }
+
+        public async Task<List<User>> GetAllUserAsync()
+        {
+            try
+            {
+                //Usaremos el prefijo de la ruta del API que se indica en
+                //Services\APIConnection para agregar el sufijo y lograr la ruta
+                //completa de consumo del end point que se quiere usar.
+
+                string RouteSufix = string.Format("Users");
+
+                string URL = Services.APIConnection.ProductionPrefixURL + RouteSufix;
+
+                RestClient client = new RestClient(URL);
+
+                Request = new RestRequest(URL, Method.Get);
+
+                //Agregamos el mecanismo de seguridad, en este caso API key
+                Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
+
+                //Ejecutar la llamada del API
+                RestResponse response = await client.ExecuteAsync(Request);
+
+                //Saber si las cosas salieron bien
+                HttpStatusCode statusCode = response.StatusCode;
+                if (statusCode == HttpStatusCode.OK)
+                {
+                    var list = JsonConvert.DeserializeObject<List<User>>(response.Content);
+
+                    return list;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                throw;
+            }
+        }
+
+        public async Task<bool> ModifyPasswordAsync()
+        {
+            try
+            {
+
+                string RouteSufix = string.Format("Users/ChangePass?username={0}&password={1}", this.Email, this.Password);
+
+                string URL = Services.APIConnection.ProductionPrefixURL + RouteSufix;
+
+                RestClient client = new RestClient(URL);
+
+                Request = new RestRequest(URL, Method.Post);
+
+                //Agregamos el mecanismo de seguridad, en este caso API key
+                Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
+
+                Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
+
+                string SerializedModel = JsonConvert.SerializeObject(this);
+                Request.AddBody(SerializedModel, GlobalObjects.MimeType);
 
                 //Ejecutar la llamada del API
                 RestResponse response = await client.ExecuteAsync(Request);
